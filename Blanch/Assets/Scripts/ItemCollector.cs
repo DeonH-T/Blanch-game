@@ -9,11 +9,14 @@ public class ItemCollector : MonoBehaviour
 
     [SerializeField] private Text colourCounterText;
 
+    [SerializeField] private AudioSource collectionSoundEffect;
+
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("ColourBall"))
         {
+            collectionSoundEffect.Play();
             Destroy(collision.gameObject);
             colourballs++;
             colourCounterText.text = "Colours " + colourballs;
